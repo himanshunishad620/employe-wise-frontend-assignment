@@ -45,7 +45,7 @@ export default function Login() {
   return (
     <div className="w-full h-full flex ">
       {/* left side  */}
-      <div className="hidden lg:flex justify-start pl-30  w-1/2  h-full bg-[url('bg.svg')] bg-contain bg-cover">
+      <div className="hidden lg:flex justify-start pl-30  w-1/2  h-full bg-[url('D:/TEST/employe-wise-frontend-assignment/public/bg.svg')] bg-contain bg-cover">
         <img src="persons.svg" alt="" className="w-90" />
       </div>
       {/* right side form */}
