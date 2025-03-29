@@ -8,6 +8,7 @@ export default function DataProvider({children}) {
         const [totalPages,setTotalPages]=useState(1)
         const [updating,setUpdating]=useState(false)
         const [error,setError]=useState("")
+        // initial user list 
         const fetchData=useCallback(async(id)=>{
           setError("")
           try {
@@ -19,6 +20,7 @@ export default function DataProvider({children}) {
           }
         },[])
         const updateData=useCallback(async(id,data)=>{
+          // user update details 
           setUpdating(true)
           try {
            await axios.put(`${baseUrl}api/users/${id}`,data)
@@ -29,6 +31,7 @@ export default function DataProvider({children}) {
             setUpdating(false)
           }
         },[])
+        // user removal 
         const deleteUser=useCallback(async(id)=>{
           try {
             await axios.delete(`${baseUrl}api/users/${id}`)

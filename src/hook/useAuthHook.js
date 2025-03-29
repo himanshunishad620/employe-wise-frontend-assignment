@@ -5,6 +5,7 @@ import baseUrl from '../constant/apiConfig'
 export default function useAuthHook() {
         const [loading,setLoading]=useState(false)
         const [isAuthenticated,setIsAuthenticated]=useState(localStorage.getItem("token") || false)
+        // authentication 
         const handleLogin=async({email,password})=>{
                 setLoading(true)
                 try {

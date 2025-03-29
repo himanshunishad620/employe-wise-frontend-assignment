@@ -14,6 +14,7 @@ const override= {
 export default function Login() {
   const {isAuthenticated}=useAuthHook()
   const navigate=useNavigate()
+  // protection
   if(isAuthenticated){
     toast.warn("Log out first!")
     return <Navigate to='/'/>
@@ -21,6 +22,7 @@ export default function Login() {
   const {handleLogin,loading}=useAuthHook()
   const [show, setShow] = useState(false);
   const [checked, setChecked] = useState(false);
+  // login 
   const handleSubmit = async() => {
     if (checked) {
       localStorage.setItem("email", formik.values.email);
@@ -29,6 +31,8 @@ export default function Login() {
      await handleLogin(formik.values)
      navigate('/')
   };
+
+  // formik
   const formik = useFormik({
     initialValues: {
       email: localStorage.getItem("email") || "",
@@ -88,6 +92,7 @@ export default function Login() {
                 ? formik.errors.password
                 : ""}
             </p>
+             {/* hide and show password */}
             <div
               className="absolute right-4 top-[35%] translate-y-[-50%] cursor-pointer"
               onClick={() => setShow(!show)}
@@ -102,7 +107,7 @@ export default function Login() {
                 />
               )}
             </div>
-            {/* hide and show password */}
+
           </div>
           <span className="w-full  flex justify-between items-center">
             <span className="flex items-center gap-1 ">

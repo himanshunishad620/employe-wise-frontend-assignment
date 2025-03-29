@@ -12,6 +12,7 @@ const override = {
   borderColor: "red",
 };
 export default function ListItem({ user, searchText }) {
+  // for search implementation
   if (
     !user?.first_name.includes(searchText) &&
     !user?.last_name.includes(searchText)
@@ -20,15 +21,18 @@ export default function ListItem({ user, searchText }) {
   const [deleteing, setDeleteing] = useState(false);
   const { updateData, updating, deleteUser } = useData();
   const [popup, setPopup] = useState(false);
+  //update user data
   const handleSubmit = async () => {
     await updateData(user.id, formik.values);
     setPopup(false);
   };
+  // delete user
   const handleDelete = async () => {
     setDeleteing(true);
     await deleteUser();
     setDeleteing(false);
   };
+  //formik
   const formik = useFormik({
     initialValues: {
       email: user.email,
@@ -72,6 +76,8 @@ export default function ListItem({ user, searchText }) {
           </div>
         </div>
       </li>
+
+      {/* update form popup */}
       {popup && (
         <div className=" flex justify-center  items-center w-full fixed top-0 left-0 h-full bg-black/40 ">
           <form
